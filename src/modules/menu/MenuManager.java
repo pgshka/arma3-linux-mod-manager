@@ -1,5 +1,7 @@
 package modules.menu;
 
+import lombok.Getter;
+import modules.menu.base.MenuBase;
 import modules.menu.impl.CatMenu;
 import modules.menu.impl.MainMenu;
 
@@ -7,18 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuManager {
-    protected List<Menu> menuList = new ArrayList<>();
-    protected Menu currentMenu;
+    protected List<MenuBase> menuList = new ArrayList<>();
+
+    @Getter
+    protected MenuBase currentMenu;
 
     public MenuManager() {
-        menuList.add(new MainMenu());
+        menuList.add(new MainMenu()); //так же надо добавить в MenuConstanst
         menuList.add(new CatMenu());
-        open(0);
+        open(MenuConstants.MAIN_MENU);
     }
 
     public void open(int index)
     {
-        Menu menu = menuList.get(index);
+        MenuBase menu = menuList.get(index);
         if (menu != null)
         {
             currentMenu = menu;
@@ -33,7 +37,7 @@ public class MenuManager {
             return;
 
         currentMenu.close();
-        open(0);
+        open(MenuConstants.MAIN_MENU);
     }
 
     public List<String> GetListOfNames()

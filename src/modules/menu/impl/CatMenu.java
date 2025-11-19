@@ -1,9 +1,15 @@
 package modules.menu.impl;
 
+import modules.command.CommandManager;
 import modules.menu.Menu;
 import modules.menu.MenuManager;
+import modules.menu.base.MenuBase;
 
-public class CatMenu implements Menu {
+public class CatMenu extends MenuBase {
+    public CatMenu() {
+        super();
+    }
+
     @Override
     public String name() {
         return "main";

@@ -1,10 +1,15 @@
 package modules.menu.impl;
 
-import com.sun.tools.javac.Main;
-import modules.menu.Menu;
+import modules.command.impl.OpenCatMenuCommand;
 import modules.menu.MenuManager;
+import modules.menu.base.MenuBase;
 
-public class MainMenu implements Menu {
+public class MainMenu extends MenuBase {
+    public MainMenu() {
+        super();
+        commandManager.register(new OpenCatMenuCommand(this));
+    }
+
     @Override
     public String name() {
         return "main";
@@ -12,7 +17,7 @@ public class MainMenu implements Menu {
 
     @Override
     public void run(MenuManager menuManager) {
-        System.out.println("Main menu!");
+        super.run(menuManager);
     }
 
     @Override

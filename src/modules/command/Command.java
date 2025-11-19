@@ -1,4 +1,8 @@
 package modules.command;
 
-public class Command {
+import modules.menu.base.MenuBase;
+
+public interface Command {
+    String name();
+    void execute(String[] args);
 }
